@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quản lý Câu lạc bộ - Đề 39</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6fb;
+  color: #263238;
+}
+header {
+  background: #164b90;
+  color: white;
+  padding: 24px;
+  text-align: center;
+}
+header h1 { margin: 0 0 8px; }
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  background: white;
+}
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #1769c2;
+  color: white;
+}
+button:hover { opacity: 0.85; }
+button.active { background: #123c70; }
+button.delete { background: #c62828; }
+button.edit { background: #e78b10; }
+main {
+  max-width: 1150px;
+  margin: 25px auto;
+  padding: 0 15px;
+}
+section {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px #00000012;
+}
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+input {
+  padding: 11px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-width: 180px;
+  flex: 1;
+}
+.table-wrap { overflow-x: auto; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+th { background: #e8f0fc; }
+tr:nth-child(even) { background: #f8fafc; }
+.actions { white-space: nowrap; }
+.actions button { margin: 2px; }
+#message { margin: 15px 0; color: #1769c2; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>HỆ THỐNG QUẢN LÝ CÂU LẠC BỘ</h1>
+  <p>Đề 39 - Triển khai và Quản trị Hệ thống Phần mềm</p>
+</header>
+
+<nav id="menu"></nav>
+
+<main>
+<section>
+  <h2 id="heading"></h2>
+  <p id="message"></p>
+  <form id="form"></form>
+  <div class="table-wrap">
+    <table>
+      <thead id="thead"></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+</section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
