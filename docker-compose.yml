@@ -144,7 +144,38 @@ services:
     networks:
       - frontend
 
+
+  loki:
+    image: grafana/loki:latest
+    restart: unless-stopped
+    command:
+      - "-config.file=/etc/loki/loki-config.yml"
+    volumes:
+      - ./logging/loki/loki-config.yml:/etc/loki/loki-config.yml:ro
+      - loki_data:/loki
+    ports:
+      - "127.0.0.1:3101:3100"
+    networks:
+      - frontend
+
+
+  promtail:
+    image: grafana/promtail:latest
+    restart: unless-stopped
+    command:
+      - "-config.file=/etc/promtail/promtail-config.yml"
+    volumes:
+      - ./logging/promtail/promtail-config.yml:/etc/promtail/promtail-config.yml:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - promtail_positions:/tmp
+    depends_on:
+      - loki
+    networks:
+      - frontend
+
 volumes:
+  promtail_positions:
+  loki_data:
   grafana_data:
   prometheus_data:
   mysql_data:
