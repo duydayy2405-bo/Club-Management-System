@@ -1,0 +1,11 @@
+apiVersion: 1
+
+providers:
+  - name: DE39
+    orgId: 1
+    folder: Club Management
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /var/lib/grafana/dashboards

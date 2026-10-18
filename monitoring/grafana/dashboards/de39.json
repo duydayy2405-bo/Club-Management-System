@@ -1,0 +1,107 @@
+{
+  "uid": "de39-club-monitoring",
+  "title": "DE39 - Club Management Monitoring",
+  "tags": [
+    "de39",
+    "club",
+    "monitoring"
+  ],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "15s",
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Tr\u1ea1ng th\u00e1i d\u1ecbch v\u1ee5",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "de39-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "up",
+          "refId": "A",
+          "legendFormat": "{{job}} {{name}}"
+        }
+      ],
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      }
+    },
+    {
+      "id": 2,
+      "title": "K\u1ebft n\u1ed1i Nginx",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "de39-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "nginx_connections_active",
+          "refId": "A",
+          "legendFormat": "{{job}} {{name}}"
+        }
+      ],
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 12,
+        "h": 9
+      }
+    },
+    {
+      "id": 3,
+      "title": "K\u1ebft n\u1ed1i MySQL",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "de39-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "mysql_global_status_threads_connected",
+          "refId": "A",
+          "legendFormat": "{{job}} {{name}}"
+        }
+      ],
+      "gridPos": {
+        "x": 0,
+        "y": 9,
+        "w": 12,
+        "h": 9
+      }
+    },
+    {
+      "id": 4,
+      "title": "RAM Container (MB)",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "de39-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum by (name) (container_memory_working_set_bytes{image!=\"\"}) / 1024 / 1024",
+          "refId": "A",
+          "legendFormat": "{{job}} {{name}}"
+        }
+      ],
+      "gridPos": {
+        "x": 12,
+        "y": 9,
+        "w": 12,
+        "h": 9
+      }
+    }
+  ]
+}
